@@ -1,0 +1,71 @@
+<body style="margin-left: 20px;margin-right:20px">
+<br/><p>D5</p>
+<div *ngIf="!user">
+<form [formGroup]="userForm" (submit)="onSubmit()">
+    <input type="text" formControlName="name" placeholder="Name" class="form-control">
+    <div *ngIf="userForm.controls['name'].errors!=null && userForm.controls['name'].invalid && 
+    (userForm.controls['name'].dirty || userForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['name'].errors['required'] != null">
+            Please enter name!
+        </div>
+    </div><br/>
+    <input type="email" formControlName="email" placeholder="Email address" class="form-control">
+    <div *ngIf="userForm.controls['email'].errors!=null && userForm.controls['email'].invalid && 
+    (userForm.controls['email'].dirty || userForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['email'].errors['required'] != null">
+            Please enter email address!
+        </div>
+        <div *ngIf="userForm.controls['email'].errors['email'] != null">
+            Please enter valid email address!
+        </div>
+    </div><br/>
+    <input type="radio" formControlName="gender" value="Male" aria-selected="true">Male &nbsp;
+    <input type="radio" formControlName="gender" value="Female"> Female
+    <div *ngIf="userForm.controls['gender'].errors!=null && userForm.controls['gender'].invalid && 
+    (userForm.controls['gender'].dirty || userForm.controls['gender'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['gender'].errors['required'] != null">
+            Please select gender!
+        </div>
+    </div><br/><br/>
+    <input type="number" formControlName="age" placeholder="Age" class="form-control">
+    <div *ngIf="userForm.controls['age'].errors!=null && userForm.controls['age'].invalid && 
+    (userForm.controls['age'].dirty || userForm.controls['age'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['age'].errors['required'] != null">
+            Please enter age!
+        </div>
+        <div *ngIf="userForm.controls['age'].errors['min'] != null">
+            You must be 18 years old or above!
+        </div>
+    </div><br/>
+    <input type="number" formControlName="sem" placeholder="Semester" class="form-control">
+    <div *ngIf="userForm.controls['sem'].errors!=null && userForm.controls['sem'].invalid && 
+    (userForm.controls['sem'].dirty || userForm.controls['sem'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['sem'].errors['required'] != null">
+            Please enter semester!
+        </div>
+        <div *ngIf="userForm.controls['sem'].errors['min'] != null || userForm.controls['sem'].errors['max'] != null">
+            Please enter valid semester!
+        </div>
+    </div><br/>
+    <input type="tel" formControlName="phno" placeholder="Phone number" class="form-control">
+    <div *ngIf="userForm.controls['phno'].errors!=null && userForm.controls['phno'].invalid && 
+    (userForm.controls['phno'].dirty || userForm.controls['phno'].touched)" class="alert alert-danger">
+        <div *ngIf="userForm.controls['phno'].errors['required'] != null">
+            Please enter phone number!
+        </div>
+        <div *ngIf="userForm.controls['phno'].errors['minlength'] != null || userForm.controls['phno'].errors['maxlength'] != null">
+            Please enter valid phone number!
+        </div>
+    </div><br/>
+    <input type="submit" [disabled]="userForm.pristine || userForm.invalid" class="btn btn-dark">
+</form></div><br/>
+
+<div *ngIf="user" class="form-group">
+    Name: {{user.name}}<br/>
+    Email address: {{user.email}}<br/>
+    Gender: {{user.gender}}<br/>
+    Age: {{user.age}}<br/>
+    Semester {{user.sem}}<br/>
+    Phone number: {{user.phno}}
+</div><br/>
+</body>

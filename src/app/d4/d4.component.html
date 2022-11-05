@@ -1,0 +1,22 @@
+<body style="margin-left: 20px;margin-right:20px">
+<br/>
+<p>D4</p>
+
+<!-- method-1: -->
+
+<select class="form-select" [(ngModel)]="selectModel" #selectm>
+    <option [ngValue]="undefined" disabled selected>Choose any one option</option>
+    <option *ngFor="let a of arr" [ngValue]="a">{{a}}</option>
+</select><br/><br/>
+<input class="form-control" type="text" *ngIf="selectm.selectedIndex==1" placeholder="Textbox">
+<textarea class="form-control" type="text" *ngIf="selectm.selectedIndex==2" placeholder="Textarea"></textarea><br/>
+
+<!-- method-2: -->
+
+<!-- <select [(ngModel)]="selectModel" (change)="onchange()">
+    <option [ngValue]="undefined" disabled selected>Choose any one option</option>
+    <option *ngFor="let a of arr" [value]="a">{{a}}</option>
+</select><br/><br/>
+<input type="text"  *ngIf="s==1" placeholder="Textbox">
+<textarea type="text"  *ngIf="s==2" placeholder="Textarea"></textarea> -->
+</body>
